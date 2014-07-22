@@ -2,6 +2,9 @@ package com.company;
 
 import java.util.ArrayList;
 
+/**
+ * Main class
+ */
 public class Main {
 
     private static final int numArguments = 2;
