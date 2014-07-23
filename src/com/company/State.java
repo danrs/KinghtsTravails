@@ -27,7 +27,7 @@ public class State implements Comparable<State> {
 
     /**
      * Generate a new successor state with the path of the current state and one additional tile added.
-     * @param tile
+     * @param tile - String describing new tile that will be travelled to
      * @return State succeeding this one
      */
     private State successor(String tile){
@@ -52,12 +52,13 @@ public class State implements Comparable<State> {
 
     @Override
     /**
-     * States are compared by path length
+     * Compare States by path length
+     * @param state - The state being compared to
      */
-    public int compareTo(State s){
-        if(this.getLength() > s.getLength()){
+    public int compareTo(State state){
+        if(this.getLength() > state.getLength()){
             return 1;
-        } else if(this.getLength() < s.getLength()){
+        } else if(this.getLength() < state.getLength()){
             return -1;
         } else {
             return 0;

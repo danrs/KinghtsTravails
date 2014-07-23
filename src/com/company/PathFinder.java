@@ -17,8 +17,8 @@ public class PathFinder {
 
     /**
      * Generates an arrayList describing the shortest path between two points using Dijkstra
-     * @param start
-     * @param end
+     * @param start - String describing starting tile
+     * @param end - String describing end tile
      * @return ArrayList of tile code Strings describing the path, or null if no path
      */
     public ArrayList<String> dijkstra(String start, String end){
@@ -38,7 +38,6 @@ public class PathFinder {
             for(State s : current.getSuccessors()){
                 //ignore if successor is on closed list
                 if(s != null && !closedList.contains(s)){
-                    System.out.println("examining " + current.currentTile());
                     if(openList.contains(s)){
                         //check if this path is better and change if so
                         for(State oldSuccessor : openList){

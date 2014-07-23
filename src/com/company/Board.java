@@ -22,7 +22,7 @@ public abstract class Board {
     public Board(){
         //populate tiles
         tiles = new HashMap<String, ArrayList<String>>();
-        String current = null;
+        String current;
         for(int i=0; i<boardWidth; i++){
             for(int j = 0; j<boardWidth; j++){
                 current = tileCode(i,j);
@@ -35,8 +35,9 @@ public abstract class Board {
     }
 
     /**
-     * Generates all valid neighbours for a piece on the current tile
-     * @param tile
+     * Generates all valid neighbours for a piece on the current tile. This is called by the constructor and not needed
+     * after construction - getNeighbours() should be used instead.
+     * @param tile - String describing the tile to have neighbours generated
      * @return ArrayList of Strings containing tile codes
      * @precondition isValid(tile) == true
      */
@@ -44,7 +45,7 @@ public abstract class Board {
 
     /**
      * Returns the list of all valid neighbours (or moves) for a piece at tile
-     * @param tile
+     * @param tile - String describing the tile in question
      * @return ArrayList of Strings describing tile codes for valid moves
      * @precondition isValid(tile) == true
      */
@@ -54,7 +55,7 @@ public abstract class Board {
 
     /**
      * Determine if a tile lies on the chessboard
-     * @param tile
+     * @param tile - String describing tile being examined
      * @return true if tile is on board, else false
      */
     public boolean isValid(String tile){
@@ -62,25 +63,20 @@ public abstract class Board {
             return false;
         }
 
-        if(tile.length() == 2 && validChars.indexOf(tile.charAt(0)) != -1 && validChars.indexOf(tile.charAt(1)) != -1){
-            return true;
-        } else {
-            return false;
-        }
+        return (tile.length() == 2 && validChars.indexOf(tile.charAt(0)) != -1 && validChars.indexOf(tile.charAt(1)) != -1);
 
     }
 
     /**
      * Returns a string describing the tile location
-     * @param row
-     * @param column
-     * @return String
+     * @param row - int describing tile row
+     * @param column - int describing tile column
+     * @return String describing tile code
      * @precondition row > 0 && row < boardWidth
      * @precondition column >= 0 && column < boardWidth
      */
     protected String tileCode(int row, int column){
         //use ascii value to generate character
         return ((char) (column + 'A')) + Integer.toString(row + 1);
-
     }
 }

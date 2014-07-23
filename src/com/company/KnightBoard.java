@@ -1,7 +1,6 @@
 package com.company;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * Created by Daniel on 21/07/2014.
@@ -13,15 +12,15 @@ public class KnightBoard extends Board {
 
     /**
      * Generates all valid neighbours for a knight on the current tile
-     * @param tile
+     * @param tile - The tile having neighbours generated
      * @return ArrayList of Strings containing tile codes
      * @precondition isValid(tile) == true
      */
     public ArrayList<String> generateNeighbours(String tile) {
         ArrayList<String> neighbouringTiles = new ArrayList<String>();
         String current;
-        int row = (int) (tile.charAt(0)-'A');
-        int column = (int) (tile.charAt(1)-'1');
+        int row = tile.charAt(0)-'A';
+        int column = tile.charAt(1)-'1';
         int swap;
 
         int rowOffset = 1;
